@@ -1,8 +1,16 @@
+
+/**
+ * @file bridges.cpp
+ * @author Jatin Narula(jatin.jt.narula@gmail.com)
+ * @brief This program finds out the cycle in a undirected graph. Time complexity : O(v + e)
+ * @version 0.1
+ * @date 2022-02-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include<bits/stdc++.h>
 using namespace std;
-
- // time complexity : O(n + e)
-
 
 class Solution {
 

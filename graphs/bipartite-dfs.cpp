@@ -1,3 +1,14 @@
+/**
+ * @file bipartite-bfs.cpp
+ * @author Jatin Narula (jatin.jt.narula@gmail.com)
+ * @brief This program finds whether a graph is bipartite or not. time complexity: O(n + e).
+ * @version 0.1
+ * @date 2022-02-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
