@@ -1,57 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector <int> graph[10005];
+int n, m;
+bool vis[100007] = {false};
+bool isCycle(int node,int parent) {
+	vis[node] = true;
 
- // time complexity : O(n + e)
-
-
-class Solution {
-
-public:
-    bool checkForCycle(int node, int parent, vector<int> &vis, vector<int> adj[]) {
-        vis[node] = 1; 
-        for(auto it: adj[node]) {
-            if(!vis[it]) {
-                if(checkForCycle(it, node, vis, adj)) 
-                    return true; 
-            }
-            else if(it!=parent) 
-                return true; 
-        }
-        
-        return false; 
-    }
-public:
-	bool isCycle(int V, vector<int>adj[]){
-	    vector<int> vis(V+1, 0); 
-	    for(int i = 0;i<V;i++) {
-	        if(!vis[i]) {
-	            if(checkForCycle(i, -1, vis, adj)) return true; 
-	        }
-	    }
-	    
-	    return false; 
-	}
-};
-
-// { Driver Code Starts.
-int main(){
-	int tc;
-	cin >> tc;
-	while(tc--){
-		int V, E;
-		cin >> V >> E;
-		vector<int>adj[V];
-		for(int i = 0; i < E; i++){
-			int u, v;
-			cin >> u >> v;
-			adj[u].push_back(v);
-			adj[v].push_back(u);
+	for (int i = 0; i < graph[node].size(); i++) {
+		int child = graph[node][i];
+		if(!vis[child]) {
+			if (isCycle(child, node))
+				return true;
 		}
-		Solution obj;
-		bool ans = obj.isCycle(V, adj);
-		if(ans)
-			cout << "1\n";
-		else cout << "0\n";
+		else if (child == parent)
+			return true;
 	}
+
+	return false;
+}
+int main() {
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+		graph[u].push_back(v);
+		graph[v].push_back(u);
+    }
+
+	return isCycle(0, -1);
 	return 0;
-}  // } Driver Code Ends
+}
